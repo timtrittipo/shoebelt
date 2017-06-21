@@ -1,5 +1,6 @@
 #!/bin/bash
 
+unset gitHash7 gitTagExact gitTag
 gitHash7=$(git rev-parse --short HEAD || :)                # $gitHash7 is a 7 char hash from git eg: a1b2c3d
 gitTagExact=$(git describe --exact-match 2>/dev/null || :) # fatal: no tag exactly matches '010000000000000..'
 gitTag=$(git describe --tags 2>/dev/null || :)             #1.1.2222-123-abcdef4
