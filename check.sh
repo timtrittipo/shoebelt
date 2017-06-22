@@ -11,4 +11,17 @@ echo "0 ${gitHash7}"
 echo "1 ${gitTagExact}"
 echo "2 ${gitTag}"
 
+if [[ ${gitTag} =~ -[[:digit:]]-[[:alnum:]] ]]; then
+  echo "commit after tag"
+elif [[ ${gitTag} =~ ^[[:digit:]]+\.[[:digit:]]+\.[[:alpha:]]\.[[:digit:]]\.[[:digit:]]$ ]]; then
+  echo "good tag"
+  # 3.0.A.5.4, so that the regex [[:digit:]]+.[[:digit:]]+.[[:alpha:]]
+fi
 
+gitTag="${1}"
+if [[ ${gitTag} =~ -[[:digit:]]-[[:alnum:]] ]]; then
+  echo "commit after tag"
+fi
+[[ ${gitTag} =~ ^[[:digit:]]+\.[[:digit:]]+\.[[:alpha:]]+\.[[:digit:]]+\.[[:digit:]]+$ ]] &&  echo "good tag"
+  # 3.0.A.5.4, so that the regex [[:digit:]]+.[[:digit:]]+.[[:alpha:]]
+# [[ ${gitTag} =~ ^([[:digit:]]+\.){2}[[:alpha:]]+\.[[:digit:]]+\.[[:digit:]]+$ ]] &&  echo "good tag regex 2"
